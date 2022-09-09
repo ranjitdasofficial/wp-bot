@@ -1,0 +1,13 @@
+[
+  {
+    "name": "ajay devgan",
+    "net_worth": 30000000,
+    "gender": "male",
+    "nationality": "in",
+    "occupation": ["actor", "film_producer", "film_director"],
+    "height": 1.75,
+    "birthday": "1969-04-02",
+    "age": 53,
+    "is_alive": true
+  }
+]
