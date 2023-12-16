@@ -1,7 +1,7 @@
 const {MessageMedia} = require('whatsapp-web.js')
 const sendMedia = async (msg) => {
     let media;
-    if (msg.startsWith("http")) {
+    if (msg.includes("http")) {
       media = await MessageMedia.fromUrl(msg);
     } else {
       try {
@@ -11,6 +11,7 @@ const sendMedia = async (msg) => {
         media = "file was not found";
       }
     }
+  
     return media;
   };
 

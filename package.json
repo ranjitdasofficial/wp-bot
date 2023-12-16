@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "wp-bot",
   "main": "index.js",
- 
   "scripts": {
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,18 +14,24 @@
     "npm": ">= 4.4.0"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.1.2",
     "axios": "^0.27.2",
+    "chatgpt": "^4.7.2",
     "colibri": "*",
     "cross-fetch": "^3.1.5",
+    "easy-instagram-post-downloader": "^1.0.5",
     "express": "^4.18.1",
     "jade": ">= 0.0.1",
     "node-fetch": "^3.2.10",
+    "openai": "^3.1.0",
+    "porn-picture": "^1.6.0",
+    "pornsearch": "^2.4.3",
     "porny": "^1.0.0",
     "qrcode": "^1.5.1",
     "qrcode-terminal": "^0.12.0",
     "request": "^2.88.2",
     "requests": "^0.3.0",
     "socket.io": "^4.5.1",
-    "whatsapp-web.js": "^1.17.1"
+    "whatsapp-web.js": "^1.23.0"
   }
 }
