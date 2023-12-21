@@ -1,2 +1,3 @@
-2023/12/21-17:34:54.746 6ccc Creating DB /home/technicalranjit/Documents/wp-bot/.wwebjs_auth/session-client-one/Default/Local Storage/leveldb since it was missing.
-2023/12/21-17:34:54.753 6ccc Reusing MANIFEST /home/technicalranjit/Documents/wp-bot/.wwebjs_auth/session-client-one/Default/Local Storage/leveldb/MANIFEST-000001
+2023/12/21-17:37:46.448 70d6 Reusing MANIFEST /home/technicalranjit/Documents/wp-bot/.wwebjs_auth/session-client-one/Default/Local Storage/leveldb/MANIFEST-000001
+2023/12/21-17:37:46.448 70d6 Recovering log #3
+2023/12/21-17:37:46.448 70d6 Reusing old log /home/technicalranjit/Documents/wp-bot/.wwebjs_auth/session-client-one/Default/Local Storage/leveldb/000003.log 
