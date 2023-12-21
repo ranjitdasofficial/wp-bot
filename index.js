@@ -80,7 +80,7 @@ client.on("auth_failure", (msg) => {
 
 
 // const openai = new OpenAIApi(configuration);
-const openai = new GoogleGenerativeAI("");
+const openai = new GoogleGenerativeAI(process.env.API_KEY);
 
 
 
