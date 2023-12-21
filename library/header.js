@@ -6,7 +6,7 @@ const SocketIo = require("socket.io");
 // const qrcode = require('qrcode-terminal');
 const fs = require("fs");
 const http = require("http");
-const qrcode = require("qrcode-terminal");
+const qrcode = require("qrcode");
 const { constants } = require("buffer");
 
 const app = express();

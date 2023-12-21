@@ -63,9 +63,9 @@ const client = new Client({
     clientId: "client-one",
   }),
 });
-client.on('qr', qr => {
-  qrcode.generate(qr, {small: true});
-});
+// client.on('qr', qr => {
+//   qrcode.generate(qr, {small: true});
+// });
 
 client.initialize();
 
@@ -84,19 +84,19 @@ const openai = new GoogleGenerativeAI(process.env.API_KEY);
 
 
 
-// io.on("connection", function (socket) {
-//   socket.emit("message", "connecting.....");
-//   client.on("qr", (qr) => {
-//     console.log("QR Receiveed", qr);
-//     qrcode.toDataURL(qr, (err, url) => {
-//       socket.emit("qr", url);
-//       socket.emit("message", "QR Code Receiver , Scan Please");
-//     });
-//   });
-//   client.on("ready", async () => {
-//     socket.emit("message", "Whatsapp is ready");
-//   });
-// });
+io.on("connection", function (socket) {
+  socket.emit("message", "connecting.....");
+  client.on("qr", (qr) => {
+    console.log("QR Receiveed", qr);
+    qrcode.toDataURL(qr, (err, url) => {
+      socket.emit("qr", url);
+      socket.emit("message", "QR Code Receiver , Scan Please");
+    });
+  });
+  client.on("ready", async () => {
+    socket.emit("message", "Whatsapp is ready");
+  });
+});
 
 
 
