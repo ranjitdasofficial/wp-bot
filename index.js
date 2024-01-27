@@ -148,86 +148,86 @@ app.post("/sendMessage", async (req, res) => {
 
 });
  
-client.on("message", async (message) => {
-  const tag = message.body.split(" ")[0];
-  const body = message.body.replace(`${tag} `, "");
-  const chat = await message.getChat();
-  const getChtaBYId = await client.getChatById(chat.id._serialized);
-  const chatId = chat.id._serialized;
-  console.log("ChatId.....", chatId,"End chatId....");
-  switch (tag.toLowerCase()) {
-    case "hi":
-      console.log("running");
+// client.on("message", async (message) => {
+//   const tag = message.body.split(" ")[0];
+//   const body = message.body.replace(`${tag} `, "");
+//   const chat = await message.getChat();
+//   const getChtaBYId = await client.getChatById(chat.id._serialized);
+//   const chatId = chat.id._serialized;
+//   console.log("ChatId.....", chatId,"End chatId....");
+//   switch (tag.toLowerCase()) {
+//     case "hi":
+//       console.log("running");
 
-      let button = new Buttons('Button body',[{body:'bt1'},{body:'bt2'},{body:'bt3'}],'title','footer');
-    //  await getChtaBYId.sendMessage(button);
+//       let button = new Buttons('Button body',[{body:'bt1'},{body:'bt2'},{body:'bt3'}],'title','footer');
+//     //  await getChtaBYId.sendMessage(button);
 
-    const media = await sendMedia("https://storage.googleapis.com/kiitconnect_bucket/media/4xg3kgqx0o2");
+//     const media = await sendMedia("https://storage.googleapis.com/kiitconnect_bucket/media/4xg3kgqx0o2");
 
-    const title = 'Your Post Title';
-    const description = `Your post description goes here. It can include  with a link.Readmore`;
-    const link = 'http://kiitconnect.live';
+//     const title = 'Your Post Title';
+//     const description = `Your post description goes here. It can include  with a link.Readmore`;
+//     const link = 'http://kiitconnect.live';
     
-    // const m = MessageMedia.fromFilePath(imageFilePath);
-    const caption = `*${title&&title}*\n\n${description}\n\n*View Post:* ${link}`;
+//     // const m = MessageMedia.fromFilePath(imageFilePath);
+//     const caption = `*${title&&title}*\n\n${description}\n\n*View Post:* ${link}`;
 
-    // const caption = '*Bold* _italic_ ```code``` [link](http://kiitconnect.live)';
+//     // const caption = '*Bold* _italic_ ```code``` [link](http://kiitconnect.live)';
 
  
-   await getChtaBYId.sendMessage(media,{
-    caption: caption,
+//    await getChtaBYId.sendMessage(media,{
+//     caption: caption,
    
-   });
+//    });
 
       
-      // getHelloMessage(message);
-      break;
-    case ".ai":
-      await getChtaBYId.sendMessage("🤖 AI is ready to chat with you");
-      console.log({chat:chat,message:getChtaBYId});
-      // runCompletion(openai,message, body);
+//       // getHelloMessage(message);
+//       break;
+//     case ".ai":
+//       await getChtaBYId.sendMessage("🤖 AI is ready to chat with you");
+//       console.log({chat:chat,message:getChtaBYId});
+//       // runCompletion(openai,message, body);
 
-      break;
+//       break;
 
-    case ".movies":
-      getMovies(client, body, message);
-      break;
+//     case ".movies":
+//       getMovies(client, body, message);
+//       break;
 
-    case ".love":
-      loveCalculator(message);
-      break;
-    case ".memes":
-      memes(client, msg);
-      break;
-    case ".groupinfo":
-      groupinfo(chat, msg);
-      break;
-    case ".tagall":
-      tagall(chat, client,message,body);
-      break; 
-    case ".quotes":
-      quotes(chat);
-      break;
-    case ".age":
-      age(message);
-      break;
-    case ".delete":
-      dlt(message);
-      break;
+//     case ".love":
+//       loveCalculator(message);
+//       break;
+//     case ".memes":
+//       memes(client, msg);
+//       break;
+//     case ".groupinfo":
+//       groupinfo(chat, msg);
+//       break;
+//     case ".tagall":
+//       tagall(chat, client,message,body);
+//       break; 
+//     case ".quotes":
+//       quotes(chat);
+//       break;
+//     case ".age":
+//       age(message);
+//       break;
+//     case ".delete":
+//       dlt(message);
+//       break;
 
     
-    default:
-      if(tag.includes(".")){
-        message.reply("⚠️ Command Not Found!!\n\n👉 Try (.tagname Commands)")
-      }
-      break;
-  }
-});
+//     default:
+//       if(tag.includes(".")){
+//         message.reply("⚠️ Command Not Found!!\n\n👉 Try (.tagname Commands)")
+//       }
+//       break;
+//   }
+// });
 
-client.on("group_update", (notification) => {
-  notification.sendMessage(notification.body);
-  console.log("update", notification);
-});
+// client.on("group_update", (notification) => {
+//   notification.sendMessage(notification.body);
+//   console.log("update", notification);
+// });
 
 
 const port = process.env.PORT || 9000;
