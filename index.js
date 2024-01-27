@@ -105,18 +105,88 @@ client.on('ready', () => {
 });
 
 
+
+app.get("/send", async (req, res) => {
+  
+  const chat = await client.getChatById("120363225438657833@g.us");
+  chat.sendMessage("Hey This is from Api");
+  res.send("message sent");
+}
+);
+
+
+app.post("/sendMessage", async (req, res) => {
+  const { chatId, description,image,title,postId,eventType } = req.body;
+  console.log(chatId,description,image,title,postId,eventType);
+
+  res.json({
+    status: true,
+    message: "Message Sent",
+
+  });
+
+  const media = await sendMedia(`https://storage.googleapis.com/kiitconnect_bucket/media/${image}`);
+
+  // const title = 'Your Post Title';
+  const desc = `${description}.Readmore`;
+  const link = `http://kiitconnect.live/kiitsocial/view/${postId}`;
+  
+  // const m = MessageMedia.fromFilePath(imageFilePath);
+  const caption = `*Someone has Posted* Type- *${eventType}*\n\n${title?`*${title}*\n\n`:``}${desc}\n\n*View Post:* \n${link}`;
+
+  if(image){
+    await client.sendMessage(chatId,media, {
+      caption: caption,
+     
+     });
+  }else{
+    await client.sendMessage(chatId,caption);
+  }
+
+
+  return ;
+
+});
  
 client.on("message", async (message) => {
   const tag = message.body.split(" ")[0];
   const body = message.body.replace(`${tag} `, "");
   const chat = await message.getChat();
+  const getChtaBYId = await client.getChatById(chat.id._serialized);
+  const chatId = chat.id._serialized;
+  console.log("ChatId.....", chatId,"End chatId....");
   switch (tag.toLowerCase()) {
     case "hi":
       console.log("running");
-      getHelloMessage(message);
+
+      let button = new Buttons('Button body',[{body:'bt1'},{body:'bt2'},{body:'bt3'}],'title','footer');
+    //  await getChtaBYId.sendMessage(button);
+
+    const media = await sendMedia("https://storage.googleapis.com/kiitconnect_bucket/media/4xg3kgqx0o2");
+
+    const title = 'Your Post Title';
+    const description = `Your post description goes here. It can include  with a link.Readmore`;
+    const link = 'http://kiitconnect.live';
+    
+    // const m = MessageMedia.fromFilePath(imageFilePath);
+    const caption = `*${title&&title}*\n\n${description}\n\n*View Post:* ${link}`;
+
+    // const caption = '*Bold* _italic_ ```code``` [link](http://kiitconnect.live)';
+
+ 
+   await getChtaBYId.sendMessage(media,{
+    caption: caption,
+   
+   });
+
+      
+      // getHelloMessage(message);
       break;
     case ".ai":
-      runCompletion(openai,message, body);
+      await getChtaBYId.sendMessage("🤖 AI is ready to chat with you");
+      console.log({chat:chat,message:getChtaBYId});
+      // runCompletion(openai,message, body);
+
       break;
 
     case ".movies":
@@ -160,7 +230,7 @@ client.on("group_update", (notification) => {
 });
 
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 9000;
 server.listen(port, function () {
   console.log("App is running on*:" + port);
 });
